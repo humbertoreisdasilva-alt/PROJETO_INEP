@@ -1,55 +1,24 @@
-# Prerequisites
-*.d
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Jupyter
+.ipynb_checkpoints/
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# Local credentials and environment
+.env
+.env.*
+!.env.example
 
-# Precompiled Headers
-*.gch
-*.pch
+# Large local INEP microdata packages
+/dados/microdados_censo_da_educacao_superior_*/
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-# debug information files
-*.dwo
+# Temporary files
+Thumbs.db
+.DS_Store
+~$*

@@ -1,0 +1,9 @@
+ipykernel
+jupyter
+matplotlib
+numpy
+pandas
+plotly
+python-dotenv
+seaborn
+snowflake-connector-python
