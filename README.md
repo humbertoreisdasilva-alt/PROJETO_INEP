@@ -6,17 +6,39 @@ Projeto de análise dos microdados do Censo da Educação Superior, com recorte 
 
 ```text
 .
-├── Notebooks/
-│   ├── crisp_dm.ipynb
-│   └── crisp_dm_business_understanding_modelos_ampliados.ipynb
-├── dados/
-│   └── cep.csv
-├── .env.example
+├── .venv/
+├── .env
 ├── .gitignore
-└── requirements.txt
+├── README.md
+├── requirements.txt
+├── dados/
+│   ├── cep.csv
+│   ├── raw/
+│   │   └── microdados_censo_da_educacao_superior_*/
+│   └── processed/
+├── artefatos_inep/
+│   ├── inep_historico_2015_2024.csv
+│   ├── inep_historico_previsoes_bi.csv
+│   ├── inep_historico_previsoes_bi.parquet
+│   ├── inep_previsoes_avaliacao_e_projecao.csv
+│   ├── previsoes_inep_2025.csv
+│   ├── previsoes_inep_2025_cenario_referencia.csv
+│   └── metadados.json
+├── modelos/
+├── scripts/
+│   ├── INEP_TABELA_UNICA_SNOWFLAKE/
+│   ├── publicar_snowflake.py
+│   └── requirements_inep_snowflake.txt
+├── app/
+├── notebooks/
+│   ├── crisp_dm.ipynb
+│   ├── CRISP_DM_INEP_BI_Streamlit.ipynb
+│   └── arquivo/
+└── arquivo/
+    └── kit_inep_snowflake.zip
 ```
 
-Os pacotes de microdados do INEP não são versionados neste repositório: juntos, os arquivos locais ocupam aproximadamente 2 GB. Baixe-os diretamente na página de [Microdados do Censo da Educação Superior do INEP](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-da-educacao-superior) se forem necessários para seu uso. Os notebooks também consultam uma visão no Snowflake; para executá-los, sua conta precisa ter acesso a `PROJETO_INEP.ANALYTICS.VW_CURSOS_SP_PRIVADA_2015_2024_ML`.
+As pastas `app/`, `modelos/` e `notebooks/arquivo/` estão reservadas para os arquivos correspondentes quando estiverem disponíveis. Os microdados do INEP ficam em `dados/raw/` e não são versionados; juntos, ocupam aproximadamente 2 GB. Baixe-os diretamente na página de [Microdados do Censo da Educação Superior do INEP](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-da-educacao-superior) se forem necessários para seu uso. Os notebooks também consultam uma visão no Snowflake; para executá-los, sua conta precisa ter acesso a `PROJETO_INEP.ANALYTICS.VW_CURSOS_SP_PRIVADA_2015_2024_ML`.
 
 ## Requisitos
 
@@ -34,20 +56,14 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Crie seu arquivo local de configuração a partir do modelo:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Preencha `.env` com as credenciais e os parâmetros da sua conta Snowflake. Esse arquivo é ignorado pelo Git; nunca publique senhas, tokens ou outros segredos.
+Se ainda não houver um `.env` na raiz, copie `scripts/.env.inep.example` para `.env` e configure suas credenciais. Esse arquivo é ignorado pelo Git; nunca publique senhas, tokens ou outros segredos.
 
 ## Executar os notebooks
 
-Com o ambiente virtual ativo:
+Com o ambiente virtual ativo, a partir da raiz do projeto:
 
 ```powershell
-jupyter lab Notebooks/
+jupyter lab .
 ```
 
 Abra o notebook desejado no navegador e selecione o kernel Python do ambiente `.venv`.
@@ -64,7 +80,7 @@ git commit -m "Estrutura inicial do projeto"
 git push -u origin main
 ```
 
-Antes do commit, confira `git status` e certifique-se de que `.env`, `.venv/` e os pacotes locais de microdados não aparecem entre os arquivos a enviar.
+Antes do commit, confira `git status` e certifique-se de que `.env`, `.venv/`, os dados locais e os CSVs/Parquet gerados não aparecem entre os arquivos a enviar.
 
 ## Fonte dos dados
 

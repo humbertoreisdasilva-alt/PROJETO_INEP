@@ -1,24 +1,58 @@
-# Python
+# ==========================================
+# PROJETO INEP - DATA SCIENCE
+# ==========================================
+
+# 1. AMBIENTES PYTHON
 .venv/
 venv/
+env/
 __pycache__/
 *.py[cod]
 *.egg-info/
 dist/
 build/
 
-# Jupyter
+# 2. JUPYTER NOTEBOOK
 .ipynb_checkpoints/
 
-# Local credentials and environment
+# 3. CREDENCIAIS E CONFIGURAÇÕES SENSÍVEIS
 .env
 .env.*
 !.env.example
 
-# Large local INEP microdata packages
-/dados/microdados_censo_da_educacao_superior_*/
+# Credenciais Streamlit
+.streamlit/secrets.toml
 
-# Temporary files
+# 4. MICRODADOS INEP
+/dados/raw/*
+!/dados/raw/.gitkeep
+
+# 5. DADOS PROCESSADOS
+/dados/processed/*
+!/dados/processed/.gitkeep
+
+# 6. ARTEFATOS GERADOS PELOS NOTEBOOKS
+/artefatos_inep/*.csv
+/artefatos_inep/*.parquet
+/notebooks/inep_sp_privado.csv
+/notebooks/saida_inep/INEP_ORIGINAL_FEATURES_PREVISOES_2015_2025.csv
+
+# Previsões geradas fora da pasta de artefatos
+/notebooks/previsoes_inep_*.csv
+
+# 7. LOGS DOS MODELOS
+catboost_info/
+*.log
+
+# 8. MODELOS TREINADOS
+*.joblib
+*.pkl
+
+# 9. ARQUIVOS COMPACTADOS
+*.zip
+
+# 10. ARQUIVOS TEMPORÁRIOS
 Thumbs.db
 .DS_Store
 ~$*
+*.tmp
