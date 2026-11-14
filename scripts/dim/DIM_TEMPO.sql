@@ -1,0 +1,4 @@
+create or replace TABLE DIM_TEMPO (
+	SK_TEMPO NUMBER(38,0),
+	ANO_CENSO NUMBER(38,0)
+);
